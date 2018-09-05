@@ -1,8 +1,10 @@
 $(() => {
   console.log('js loaded');
 
-  function submitted(integer){
+  function getClassification(){
     console.log('function goes here');
+    const integer = document.getElementById('input').value;
+    console.log(integer);
     // returns 'perfect', 'abundant', or 'deficient'
     const aliquot = [];
     for(let i = 1; i <= integer/2; i ++){
@@ -13,11 +15,11 @@ $(() => {
     const aliquotSum = aliquot.reduce((a, b) => a + b);
 
     console.log(integer, aliquot, aliquotSum);
-    if (aliquotSum > integer) console.log('Abundant');
-    else if (aliquotSum < integer) console.log('Deficient');
+    if (aliquotSum > integer) console.log('Abundant')
+    else if (aliquotSum < integer) console.log('Deficient')
     else console.log('Perfect');
   }
 
   const input = document.getElementById('form');
-  input.addEventListener('submit', submitted);
+  input.addEventListener('submit', getClassification);
 });
