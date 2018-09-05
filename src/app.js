@@ -7,7 +7,7 @@ class App extends React.Component {
     this.state = {};
   }
 
-  function getClassification(integer) {
+  getClassification = (integer) => {
     // error catchers
     if(isNaN(integer)) return 'Sorry, you need to input a number to get a correct evaluation.';
     if(integer < 0) return 'Sorry, you must input a positive number to get a correct evaluation.';
@@ -28,13 +28,18 @@ class App extends React.Component {
     else return 'Perfect';
   }
 
+  handleChange = ({ target: { name, value }}) => {
+    this.setState({ [name]: value });
+  }
+
   render() {
+    console.log(this.state);
     return (
       <main>
         <h1>Perfect Number</h1>
-        <form id="form">
+        <form>
           <label>What number would you like to check?</label>
-          <input type="text" name="" value="" id="input" />
+          <input type="text" name="input" onChange={this.handleChange} />
           <button type="submit" name="button">Check</button>
         </form>
       </main>
