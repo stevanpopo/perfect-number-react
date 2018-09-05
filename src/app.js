@@ -43,7 +43,7 @@ class App extends React.Component {
     // console.log(this.state);
     return (
       <main>
-        <h1>Perfect Number</h1>
+        <h1>Perfect Number React</h1>
         <form onSubmit={this.handleSubmit}>
           <label>What number would you like to check?</label>
           <input type="text" name="input" onChange={this.handleChange} />
