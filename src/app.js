@@ -7,6 +7,27 @@ class App extends React.Component {
     this.state = {};
   }
 
+  function getClassification(integer) {
+    // error catchers
+    if(isNaN(integer)) return 'Sorry, you need to input a number to get a correct evaluation.';
+    if(integer < 0) return 'Sorry, you must input a positive number to get a correct evaluation.';
+
+    const aliquot = [];
+    // check each of the divisors. Can stop at int/2 for performance
+    for(let i = 1; i <= integer/2; i ++){
+      // if proper divisor push into array
+      if(integer % i === 0) aliquot.push(i);
+    }
+
+    // sum numbers in array to find aliquotSum
+    const aliquotSum = aliquot.reduce((a, b) => a + b);
+
+    // return correct answer
+    if (aliquotSum > integer) return 'Abundant';
+    else if (aliquotSum < integer) return 'Deficient';
+    else return 'Perfect';
+  }
+
   render() {
     return (
       <main>
