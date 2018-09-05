@@ -10,7 +10,7 @@ class App extends React.Component {
   getClassification = (integer) => {
     // error catchers
     if(isNaN(integer)) return 'Sorry, you need to input a number to get a correct evaluation.';
-    if(integer < 0) return 'Sorry, you must input a positive number to get a correct evaluation.';
+    if(integer <= 1) return 'Sorry, you must input a positive number greater than one to get a correct evaluation.';
 
     const aliquot = [];
     // check each of the divisors. Can stop at int/2 for performance
@@ -32,15 +32,22 @@ class App extends React.Component {
     this.setState({ [name]: value });
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const answer = this.getClassification(this.state.input);
+    this.setState({answer});
+  }
+
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <main>
         <h1>Perfect Number</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>What number would you like to check?</label>
           <input type="text" name="input" onChange={this.handleChange} />
           <button type="submit" name="button">Check</button>
+          {this.state.answer && <h3>Answer: {this.state.answer}</h3>}
         </form>
       </main>
     );
