@@ -11,8 +11,10 @@ class App extends React.Component {
     return (
       <main>
         <h1>Perfect Number</h1>
-        <form>
-
+        <form id="form">
+          <label>What number would you like to check?</label>
+          <input type="text" name="" value="" id="input" />
+          <button type="submit" name="button">Check</button>
         </form>
       </main>
     );
